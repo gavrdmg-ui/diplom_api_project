@@ -26,10 +26,10 @@ public class CreatePetTest extends TestBase {
         step("Проверяем что данные о питомце добавлены и соответствуют данным из запроса", () -> {
             assertThat(response.id()).isNotNull();
             assertThat(request.category()).isEqualTo(response.category());
-            assertThat(request.name().equals(response.name()));
-            assertThat(request.photoUrls().equals(response.photoUrls()));
-            assertThat(request.tags().equals(response.tags()));
-            assertThat(request.status().equals(response.status()));
+            assertThat(request.name()).isEqualTo(response.name());
+            assertThat(request.photoUrls()).isEqualTo(response.photoUrls());
+            assertThat(request.tags()).isEqualTo(response.tags());
+            assertThat(request.status()).isEqualTo(response.status());
         });
     }
 }

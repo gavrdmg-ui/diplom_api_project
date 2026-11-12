@@ -16,12 +16,12 @@ public class FindPetTests extends TestBase {
     @Test
     @DisplayName("GET /pet/{petId}: Получение информации о питомце по id")
     void findExistPetTest() {
-        PetBodyModel requestCreatePet = new PetBodyModel(createTestData.id
-                , createTestData.category
-                , createTestData.name
-                , createTestData.photoUrls
-                , createTestData.tags
-                , createTestData.status
+        PetBodyModel requestCreatePet = new PetBodyModel(createTestData.id,
+                createTestData.category,
+                createTestData.name,
+                createTestData.photoUrls,
+                createTestData.tags,
+                createTestData.status
         );
 
         PetBodyModel responseCreatePet = api.pet.create(requestCreatePet);
@@ -29,12 +29,12 @@ public class FindPetTests extends TestBase {
         PetBodyModel responseGetPet = api.pet.getPetById(responseCreatePet.id());
 
         step("Проверяем данные о питомце соответсвуют данным из запроса на создание", () -> {
-            assertThat(responseGetPet.id()).isEqualTo(responseCreatePet.id());
-            assertThat(responseGetPet.category()).isEqualTo(responseGetPet.category());
-            assertThat(responseGetPet.name()).isEqualTo(responseGetPet.name());
-            assertThat(responseGetPet.photoUrls()).isEqualTo(responseGetPet.photoUrls());
-            assertThat(responseGetPet.tags()).isEqualTo(responseGetPet.tags());
-            assertThat(responseGetPet.status()).isEqualTo(responseGetPet.status());
+            assertThat(responseGetPet.id()).isEqualTo(requestCreatePet.id());
+            assertThat(responseGetPet.category()).isEqualTo(requestCreatePet.category());
+            assertThat(responseGetPet.name()).isEqualTo(requestCreatePet.name());
+            assertThat(responseGetPet.photoUrls()).isEqualTo(requestCreatePet.photoUrls());
+            assertThat(responseGetPet.tags()).isEqualTo(requestCreatePet.tags());
+            assertThat(responseGetPet.status()).isEqualTo(requestCreatePet.status());
         });
     }
 

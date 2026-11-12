@@ -20,16 +20,19 @@ public class CreatePetTest extends TestBase {
                 createTestData.tags,
                 createTestData.status
         );
-
+        System.out.println(request);
         PetBodyModel response = api.pet.create(request);
 
         step("Проверяем что данные о питомце добавлены и соответствуют данным из запроса", () -> {
-            assertThat(response.id()).isNotNull();
-            assertThat(request.category()).isEqualTo(response.category());
-            assertThat(request.name()).isEqualTo(response.name());
-            assertThat(request.photoUrls()).isEqualTo(response.photoUrls());
-            assertThat(request.tags()).isEqualTo(response.tags());
-            assertThat(request.status()).isEqualTo(response.status());
+            System.out.println(request);
+            System.out.println(response);
+
+            assertThat(response.id()).isEqualTo(request.id());
+            assertThat(response.category()).isEqualTo(request.category());
+            assertThat(response.name()).isEqualTo(request.name());
+            assertThat(response.photoUrls()).isEqualTo(request.photoUrls());
+            assertThat(response.tags()).isEqualTo(request.tags());
+            assertThat(response.status()).isEqualTo(request.status());
         });
     }
 }

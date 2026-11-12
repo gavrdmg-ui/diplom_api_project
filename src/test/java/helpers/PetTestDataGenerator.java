@@ -16,58 +16,45 @@ public class PetTestDataGenerator {
     private List<Category> categories = new ArrayList<>();
     private List<Tag> tags = new ArrayList<>();
 
-    public Category getPetCategory(String filePath)  {
-        if(categories.isEmpty())
-        {
-            ReadFileCategories(filePath);
-            Random rand = new Random();
-            return categories.get(rand.nextInt(categories.size()));
-        }
-        else{
-            Random rand = new Random();
-            return categories.get(rand.nextInt(categories.size()));
-        }
-    }
-
-    public Integer getPetId(Integer min, Integer max){
+    public Category getPetCategory(String filePath) {
+        ReadFileCategories(filePath);
         Random rand = new Random();
-        return rand.nextInt(min,max);
+        return categories.get(rand.nextInt(categories.size()));
+
     }
 
-    public List<Tag> getPetTags(String filePath){
-        if(tags.isEmpty())
-        {
-            ReadFileTags(filePath);
+    public Integer getPetId(Integer min, Integer max) {
+        Random rand = new Random();
+        return rand.nextInt(min, max);
+    }
 
-            return tags;
-        }
-        else{
+    public List<Tag> getPetTags(String filePath) {
+        ReadFileTags(filePath);
+        return tags;
 
-            return tags;
-        }
     }
 
 
-    private void ReadFileCategories(String filePath){
+    private void ReadFileCategories(String filePath) {
         categories = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                categories.add(new Category(Integer.valueOf(values[0]),values[1]));
+                categories.add(new Category(Integer.valueOf(values[0]), values[1]));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void ReadFileTags(String filePath){
+    private void ReadFileTags(String filePath) {
         tags = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                tags.add(new Tag(Integer.valueOf(values[0]),values[1]));
+                tags.add(new Tag(Integer.valueOf(values[0]), values[1]));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

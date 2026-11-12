@@ -100,6 +100,33 @@ gradle test --tests tests.DeletePetTest
 
 Свойство `baseUrl` считывается в `tests.TestBase`; если оно не задано, используется `https://petstore.swagger.io`.
 
+## Описание Java-классов
+
+| Пакет | Класс | Назначение |
+|---|---|---|
+| `allure` | `CustomAllureListener` | Настраивает Allure REST Assured filter и шаблоны запросов/ответов |
+| `api` | `ApiClient` | Предоставляет экземпляр `PetApiClient` |
+| `api` | `PetApiClient` | Реализует создание, получение и удаление питомцев, включая негативные сценарии |
+| `helpers` | `PetTestDataGenerator` | Читает категории и теги из CSV, выбирает категорию и генерирует ID |
+| `models.createpet` | `PetBodyModel` | Record-модель тела питомца |
+| `models.createpet` | `Category` | Record-модель категории |
+| `models.createpet` | `Tag` | Record-модель тега |
+| `models.deletepet` | `DeletePetResponseModel` | Record-модель ответа удаления |
+| `models.findpet` | `NotFoundPetResponseModel` | Record-модель ошибки поиска |
+| `specs` | `BaseSpec` | Общие настройки HTTP-запросов |
+| `specs.createpet` | `CreatePetSpec` | Спецификация POST и успешного ответа создания |
+| `specs.deletepet` | `DeletePetSpec` | Спецификации успешного и негативного удаления |
+| `specs.findpet` | `FindPetSpec` | Спецификация негативного поиска |
+| `testdata` | `BaseTestData` | Общие тестовые данные, Faker и ID несуществующего питомца |
+| `testdata` | `CreatePetTestData` | Генерирует данные нового питомца |
+| `testdata` | `DeletePetTestData` | Ожидаемые значения ответов и некорректный ID для DELETE |
+| `testdata` | `FindPetTestData` | Ожидаемые значения ошибки при поиске отсутствующего питомца |
+| `tests` | `TestBase` | Инициализирует базовый URI и общие объекты тестов |
+| `tests` | `CreatePetTest` | Проверяет создание питомца |
+| `tests` | `FindPetTests` | Проверяет получение существующего и несуществующего питомца |
+| `tests` | `DeletePetTest` | Проверяет удаление существующего/несуществующего питомца и некорректный ID |
+
+
 ## Архитектура
 
 ### API-клиент
@@ -129,6 +156,7 @@ gradle test --tests tests.DeletePetTest
 | `Tag` | Тег питомца: ID и имя |
 | `DeletePetResponseModel` | Ответ удаления: code, type, message |
 | `NotFoundPetResponseModel` | Ответ об отсутствии питомца |
+
 
 ### Тестовые данные
 
@@ -166,30 +194,7 @@ gradle allureReport
 ```bash
 gradle allureServe
 ```
+<img src="images/allure_overview.PNG" alt="Главная страница">
 
-## Описание Java-классов
-
-| Пакет | Класс | Назначение |
-|---|---|---|
-| `allure` | `CustomAllureListener` | Настраивает Allure REST Assured filter и шаблоны запросов/ответов |
-| `api` | `ApiClient` | Предоставляет экземпляр `PetApiClient` |
-| `api` | `PetApiClient` | Реализует создание, получение и удаление питомцев, включая негативные сценарии |
-| `helpers` | `PetTestDataGenerator` | Читает категории и теги из CSV, выбирает категорию и генерирует ID |
-| `models.createpet` | `PetBodyModel` | Record-модель тела питомца |
-| `models.createpet` | `Category` | Record-модель категории |
-| `models.createpet` | `Tag` | Record-модель тега |
-| `models.deletepet` | `DeletePetResponseModel` | Record-модель ответа удаления |
-| `models.findpet` | `NotFoundPetResponseModel` | Record-модель ошибки поиска |
-| `specs` | `BaseSpec` | Общие настройки HTTP-запросов |
-| `specs.createpet` | `CreatePetSpec` | Спецификация POST и успешного ответа создания |
-| `specs.deletepet` | `DeletePetSpec` | Спецификации успешного и негативного удаления |
-| `specs.findpet` | `FindPetSpec` | Спецификация негативного поиска |
-| `testdata` | `BaseTestData` | Общие тестовые данные, Faker и ID несуществующего питомца |
-| `testdata` | `CreatePetTestData` | Генерирует данные нового питомца |
-| `testdata` | `DeletePetTestData` | Ожидаемые значения ответов и некорректный ID для DELETE |
-| `testdata` | `FindPetTestData` | Ожидаемые значения ошибки при поиске отсутствующего питомца |
-| `tests` | `TestBase` | Инициализирует базовый URI и общие объекты тестов |
-| `tests` | `CreatePetTest` | Проверяет создание питомца |
-| `tests` | `FindPetTests` | Проверяет получение существующего и несуществующего питомца |
-| `tests` | `DeletePetTest` | Проверяет удаление существующего/несуществующего питомца и некорректный ID |
+<img src="images/allure_suites.PNG" alt="Кейсы">
 

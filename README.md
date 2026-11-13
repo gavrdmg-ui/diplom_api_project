@@ -2,6 +2,17 @@
 
 Проект содержит автоматизированные API-тесты сервиса **Swagger Petstore**.
 
+- [ехнологический стек](#технологический-стек)
+- [Объект тестирования](#объект-тестирования)
+- [Покрытие тестами](#покрытие-тестами)
+- [Структура проекта](#структура-проекта)
+- [Назначение пакетов](#назначение-пакетов)
+- [Запуск тестов](#запуск-тестов)
+- [Описание Java-классов](#описание-java-классов)
+- [Архитектура](#архитектура)
+- [Allure-отчёт](#allure-отчёт)
+- [Allure TestOps](#allure-TestOps)
+- [Jira](#jira)
 ## Технологический стек
 
 | Технология | Назначение |
@@ -175,7 +186,7 @@ CSV-файлы:
 
 Пути к CSV заданы относительно корня проекта, поэтому запускайте Gradle из корневой директории репозитория.
 
-## Allure-отчётность
+## [Allure-отчёт](https://jenkins.qa.guru/job/42_gavrilov_diplom_api_test/2/)
 
 `CustomAllureListener` подключает `AllureRestAssured` и использует шаблоны:
 - `src/test/resources/tpl/request.ftl` — отображение HTTP-запроса;
@@ -198,3 +209,13 @@ gradle allureServe
 
 <img src="images/allure_suites.PNG" alt="Кейсы">
 
+
+## [Allure TestOps](https://allure.qa.guru/project/5439/test-cases)
+Интеграция с Allure TestOps предоставляет возможность сохранять результаты прогонов и отслеживать историю запускок
+
+<img src="images/allure-testOps.PNG" alt="TestOps">
+<img src="images/allure-testOps2.PNG" alt="TestOps2">
+
+## [Jira](https://jira.qa.guru/browse/MUL-79)
+Интеграция с Jira позволяет отображать результаты прогонов, статус каждого теста и общее время прохождения сценариев
+<img src="images/jira.PNG" alt="Jira">

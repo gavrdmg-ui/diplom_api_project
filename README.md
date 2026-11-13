@@ -1,4 +1,4 @@
-# API-тесты PetStore
+# API-тесты [PetStore](https://petstore.swagger.io)
 
 Проект содержит автоматизированные API-тесты сервиса **Swagger Petstore**.
 
